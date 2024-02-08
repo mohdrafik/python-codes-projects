@@ -5,3 +5,4 @@ garbage.py
 *.xls
 *.png
 *.jpeg
+/pdata*
