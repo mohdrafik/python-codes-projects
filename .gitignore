@@ -6,3 +6,6 @@ garbage.py
 *.png
 *.jpeg
 /pdata*
+*.pdf
+/xlsfileprocess/*.dat
+/xlsfileprocess/namingFinalfile.py
