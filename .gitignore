@@ -9,3 +9,4 @@ garbage.py
 *.pdf
 /xlsfileprocess/*.dat
 /xlsfileprocess/namingFinalfile.py
+*.pyc
