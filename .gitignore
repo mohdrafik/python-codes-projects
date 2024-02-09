@@ -7,6 +7,6 @@ garbage.py
 *.jpeg
 /pdata*
 *.pdf
-/xlsfileprocess/*.dat
+/xlsfileprocess/*.dat,*.csv
 /xlsfileprocess/namingFinalfile.py
 *.pyc
