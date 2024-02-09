@@ -10,3 +10,4 @@ garbage.py
 /xlsfileprocess/*.dat,*.csv
 /xlsfileprocess/namingFinalfile.py
 *.pyc
+/xlsfileprocess/*.csv
