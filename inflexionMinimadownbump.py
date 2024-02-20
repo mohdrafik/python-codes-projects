@@ -7,7 +7,6 @@ import pandas as pd
 # dataendpoint =320
 # df.set_axis(['Piezo','Amplitude'],axis = 'columns' )
 # ampdf = df
-
 def findDownBump(ampdf, zero_orFlatAmp):
     
     ampdfAmplitudeColumn = np.array(ampdf['Amplitude'])
