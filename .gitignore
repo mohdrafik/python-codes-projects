@@ -15,3 +15,5 @@ garbage.py
 /xlsfileprocess/*.json
 *.json
 /xlsfileprocess/myenv/
+/xlsfileprocess/*.pyc
+/xlsfileprocess/*.ipynb
