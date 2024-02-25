@@ -17,3 +17,7 @@ garbage.py
 /xlsfileprocess/myenv/
 /xlsfileprocess/*.pyc
 /xlsfileprocess/*.ipynb
+/xlsfileprocess/Amplitudephase.dat
+/xlsfileprocess/finalcombined_data.dat
+/xlsfileprocess/finalcombined_datannnnnnnnn.dat
+/xlsfileprocess/myevev/
