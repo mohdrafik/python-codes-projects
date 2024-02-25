@@ -11,3 +11,7 @@ garbage.py
 /xlsfileprocess/namingFinalfile.py
 *.pyc
 /xlsfileprocess/*.csv
+/xlsfileprocess/*.zip
+/xlsfileprocess/*.json
+*.json
+/xlsfileprocess/myenv/
