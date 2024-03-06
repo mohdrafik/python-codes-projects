@@ -7,7 +7,7 @@ garbage.py
 *.jpeg
 /pdata*
 *.pdf
-/xlsfileprocess/*.dat,*.csv
+/xlsfileprocess/*.dat
 /xlsfileprocess/namingFinalfile.py
 *.pyc
 /xlsfileprocess/*.csv
@@ -16,7 +16,6 @@ garbage.py
 *.json
 /xlsfileprocess/myenv/
 /xlsfileprocess/*.pyc
-/xlsfileprocess/
 /xlsfileprocess/Amplitudephase.dat
 /xlsfileprocess/finalcombined_data.dat
 /xlsfileprocess/finalcombined_datannnnnnnnn.dat
