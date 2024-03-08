@@ -6,7 +6,7 @@ phasedf (as a dataframe given to the function) --> phasedf = pd.read_excel(comp_
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 def reverseArrayofAvgValuesWndsize(ampdf,phasedf,avg_window):
     ampdf= ampdf.set_axis(['Piezo','Amplitude'], axis ='columns')
@@ -40,8 +40,9 @@ def reverseArrayofAvgValuesWndsize(ampdf,phasedf,avg_window):
             
             list_avg_windowSize = []   # here list is reset
     #         print(" to check the size of the is it reset or not -->!!!",len(list_avg_windowSize))
-    plt.plot(list_avg)
-    plt.show()
+            
+    # plt.plot(list_avg)
+    # plt.show()
     return list_avg
 # if __name__=="__main__":
 #     path =

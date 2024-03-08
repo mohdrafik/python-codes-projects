@@ -7,20 +7,20 @@ phasedf --> dataFrame extracted from the pahse excel files and set_index as Piez
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-def detect_inflexion_pointAfterAverage(ampdf,list_avg, avg_window ):
+def detect_inflexion_pointAfterAverage(ampdf,list_avg, consecutive_decrease_windowsize ):
     ampdfAmplitudeColumn = np.array(ampdf['Amplitude'])
     # rows = ampdfAmplitudeColumn.shape[0]
     # flipampdfAmplitudeColumn = np.flip(ampdfAmplitudeColumn)
     # values  = ampdfAmplitudeColumn   # it is list or numpy array.
     # ampdfPiezoColumn = np.array(ampdf['Piezo'])
-    print(list_avg)
-    consecutive_decreases = avg_window
+    # print(list_avg)  # <- 
+    consecutive_decreases = consecutive_decrease_windowsize
 #    
     num_decreases = 0
     inflexion_indexofAveragedAmplitude = None
 
     for i in range(1, len(list_avg)):
-        print("just entered inside the for loop",i)
+        # print("just entered inside the for loop",i)
         if list_avg[i] < list_avg[i-1]:  # Check if the current value is less than the previous one
             num_decreases += 1
 
@@ -55,12 +55,12 @@ if __name__=="__main__":
     # x= nm  , y= nA
     data_endamp =ampdf.shape[0]
     print("end dat pints = \n",data_endamp)
-    avg_window = 8
+    consecutive_decrease_windowsize = 8
     from reverseArrayOfAvgWindow import reverseArrayofAvgValuesWndsize
     # avg_window = 10
-    list_avg = reverseArrayofAvgValuesWndsize(ampdf,phasedf,avg_window)
+    list_avg = reverseArrayofAvgValuesWndsize(ampdf,phasedf,consecutive_decrease_windowsize)
 
-    index = detect_inflexion_pointAfterAverage(ampdf,list_avg,avg_window)
+    index = detect_inflexion_pointAfterAverage(ampdf,list_avg,consecutive_decrease_windowsize)
     print("index = ",index)
     a =index
     # b=rows
