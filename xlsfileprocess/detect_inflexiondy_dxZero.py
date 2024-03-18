@@ -23,8 +23,9 @@ def detect_inflexion_pointAfterAverage(ampdf,list_avg, consecutive_decrease_wind
         # print("just entered inside the for loop",i)
         if list_avg[i] < list_avg[i-1]:  # Check if the current value is less than the previous one
             num_decreases += 1
-
-            if num_decreases >= consecutive_decreases:
+           
+            if num_decreases >= consecutive_decreases and (abs(list_avg[i] - list_avg[i-consecutive_decreases]) >= 0.125):
+                print("<------------------------!!!!----------------------------->",list_avg[i],list_avg[i-consecutive_decreases-1])
                 inflexion_indexofAveragedAmplitude = i - consecutive_decreases + 1   # (<- it should be 1 less, index start from zero in actual.)
 #                 inflexion_index = i - consecutive_decreases + 1
                 # inflexion_indexofAveragedAmplitude = i - consecutive_decreases    # (<- it should be 1 less, index start from zero in actual.)
