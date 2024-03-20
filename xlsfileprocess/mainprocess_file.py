@@ -36,15 +36,16 @@ for i in range(len(amp_inOrder)):
     plt.figure()
     plot_data(ampdf,label='amp',color='blue', marker='', markersize=1,alpha=0.8,title=f"amplitude Vs Piezo {i+1}th_data",Xaxis="Piezo",Yaxis='Amplitude')
     plt.show()
+    
     plt.figure()
     plot_data(phasedf,label='phase',color='red', marker='', markersize=1,alpha=0.6,title=f"Phase Vs Piezo {i+1}th_data",Xaxis="Piezo",Yaxis='Phase')
     plt.show()
-    avg_window = 7
+    avg_window =  3 #4 #7
     list_avg = reverseArrayofAvgValuesWndsize(ampdf,phasedf,avg_window)
     plt.figure()
     plot_data(list_avg,label=f"avg of {avg_window} ",title=f"avg plot of {avg_window} data points for {i+1} file")
     plt.show()
-    consecutive_decrease_windowsize = 6
+    consecutive_decrease_windowsize = 4 #5 #6
     index = detect_inflexion_pointAfterAverage(ampdf,list_avg,consecutive_decrease_windowsize) 
     inflexion_After_avg =  index
     print("index of inflexion point w.r.to the average list(i.e. in list_avg) :",inflexion_After_avg,"<-->")
@@ -81,5 +82,5 @@ for i in range(len(amp_inOrder)):
         print(f"Directory '{directory_name}' already exists.")
 
     filesaveDatain_dat(directory_path,ampdata2saveAspiezo_nm,ampdata2saveAsAmplitude_nm,phasedata2savedegree,filenameAmplitude,filenamephase)  
-    
+    # plt.close(all)
     
