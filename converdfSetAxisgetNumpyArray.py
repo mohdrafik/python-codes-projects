@@ -21,10 +21,9 @@ def readASdfsetaxisAmpasnp(data_path,filenameAmplitude,filenamephase):
     # <--------------------------- these two points are used later data_endamp and ampdfPiezoColumn  >
     data_endamp = ampdf.shape[0]
     print("end data points = \n",data_endamp)
-
+    A0 = ampdf['Amplitude'][data_endamp-1]  # A0 is the last value of the ampdf
     ampdfPiezoColumnarr = np.array(ampdf['Piezo'])  # name chnaged to ampdfPiezoColumn from to ampdfPiezoColumnarr
-#   
+
     ampdfAmplitudeColumnarr = np.array(ampdf['Amplitude'])
     
-    return  (ampdf,phasedf,data_endamp,ampdfPiezoColumnarr,ampdfAmplitudeColumnarr) 
-#
+    return  (ampdf,phasedf,data_endamp,ampdfPiezoColumnarr,ampdfAmplitudeColumnarr,A0) 
