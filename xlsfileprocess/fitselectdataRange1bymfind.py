@@ -5,12 +5,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def find1bymcampdfandfit(ampdf,phasedf,backward_MinimaBump_nmValue,forward_MinimaBump_nmValue,res_indices,data_endamp,i,part1=None,part2 =None):
+def find1bymcampdfandfit(ampdf,phasedf,backward_MinimaBump_nmValue,forward_MinimaBump_nmValue,res_indices,data_endamp,i,zero_orFlatAmp,part2 =None):
 
     xpiezo_nm = 1000*ampdf['Piezo']  # now xpiezo_nm in nm --> after multiplying by 1000 become in nm 
     x_diff = np.diff(ampdf['Piezo'])
     d_nm = 1000*x_diff[5]   # this is in nanometer (nm) now. 
-
+    dataselect1 = zero_orFlatAmp
     # print("d in nm \t:",d_nm)
     # count = 0
     # for val in x_diff:
@@ -108,7 +108,7 @@ def find1bymcampdfandfit(ampdf,phasedf,backward_MinimaBump_nmValue,forward_Minim
 
 
     # ----------------******************************* this is the final data we will save in .dat file .------------------
-    ampdata2saveAspiezo_nm = xpiezo_nm[desired_nmBackIndexwrtoInflexion:data_choose_endindex]
+    ampdata2saveAspiezo_nm = xpiezo_nm[desired_nmBackIndexwrtoInflexion:data_choose_endindex]   # data_choose_endindex --> it is the last index = dataendamp 979 
     print(ampdata2saveAspiezo_nm.head())
     # ampdata2saveAspiezo_nm = ampdata2saveAspiezo_nm + c/m
     ampdata2saveAspiezo_nm = ampdata2saveAspiezo_nm - ampdata2saveAspiezo_nm[desired_nmBackIndexwrtoInflexion] 
@@ -145,6 +145,16 @@ def find1bymcampdfandfit(ampdf,phasedf,backward_MinimaBump_nmValue,forward_Minim
     # plt.legend()
     plt.show()
 
+# <----------------------------any data can select depend on the starting and ending points given in arguments or defined above. ---------------- >
+    # <------------------ use these two as base and select any data part from this here phase in degree and ampdf in nm. ------------- >
+    # ampdata2saveAsAmplitude_nm = (1/m)* ampdf['Amplitude']    # <---- in nm  
+    # phasedata2savedegree = phase                              # <----- in degree 
+
+    ampfrominflexion2flat_nm = (1/m)* ampdf['Amplitude'][index_inflexion:dataselect1]
+    phasefrominflexion2flat_degree = phase[index_inflexion:dataselect1]
+    piezofrominflexion2flat_nm  = ampdata2saveAspiezo_nm[index_inflexion:dataselect1]   # <--- this is the final data to save as piezo in nm.
+
+
 
     # # now generate a .dat file from the where data is saved ( unit: nm)
-    return (ampdata2saveAspiezo_nm,ampdata2saveAsAmplitude_nm,phasedata2savedegree)
+    return (ampdata2saveAspiezo_nm,ampdata2saveAsAmplitude_nm,phasedata2savedegree,ampfrominflexion2flat_nm,phasefrominflexion2flat_degree,piezofrominflexion2flat_nm)
