@@ -25,3 +25,7 @@ garbage.py
 /xlsfileprocess/test_completeCleancode.ipynb
 /xlsfileprocess/.ipynb_checkpoints/process_plot_data-checkpoint.ipynb
 .idea/
+/xlsfileprocess/find_variablePyFiles.py
+/xlsfileprocess/shape2identifyEnd.py
+
+
