@@ -7,7 +7,7 @@ phasedf --> dataFrame extracted from the pahse excel files and set_index as Piez
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-def detect_inflexion_pointAfterAverage(ampdf,list_avg, consecutive_decrease_windowsize ):
+def detect_inflexion_pointAfterAverage(ampdf,list_avg, consecutive_decrease_windowsize):
     ampdfAmplitudeColumn = np.array(ampdf['Amplitude'])
     # rows = ampdfAmplitudeColumn.shape[0]
     # flipampdfAmplitudeColumn = np.flip(ampdfAmplitudeColumn)
