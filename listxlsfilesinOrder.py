@@ -27,7 +27,7 @@ def listxlsFiles(data_path):
     l1= amp_seperate_list
     l2= phase_seperate_list
     return l1,l2
-if __name__=="__main__":
+if __name__ == "__main__":
     # data_path =  "dataproblem\\"
     data_path =  "dataproblem\\curvesongold\\"
     listxlsFiles(data_path)

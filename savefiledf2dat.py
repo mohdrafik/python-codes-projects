@@ -35,19 +35,20 @@ def filesaveDatain_dat(directory_path,ampdata2saveAspiezo_nm,ampdata2saveAsAmpli
         combined_df.to_csv(directory_path+filename, sep=' ', index=False, header=True)
 
         print(colored(f" \n HELLO ! <----------  file are saved in .dat format with name:{filename} ---------->  ",'green', attrs=['bold']))
+      
     if hamakerConstant == 1:
         K = 2.56
         Q = 234
         R = 10*10E-9
         A0 = A0
-
+        print("<--**************************---------inside the calculation hawmaker constant:  -------------***************** >",A0,hamakerConstant)
 
         df1 = ampdata2saveAspiezo_nm*1E-9  #  converted to m 
         df2 = ampdata2saveAsAmplitude_nm*1E-9 # converted to m 
         df3_degree = phasedata2savedegree
         df3 = phasedata2savedegree*((np.pi)/180)  #  in now in radian
 
-        df4 = ((-3*K*A0)/(Q*R))*((df2**2 )*np.cos(df3))*(((df1+df2)/df2)**2 -1)**1.5   # rewrite this formula carefully and check..
+        df4 = ((-3*K*A0)/(Q*R))*((df2**2 )*np.cos(df3))*((((df1+df2)/df2)**2) -1)**1.5   # rewrite this formula carefully and check..
 
         print(" here check the dimensions match or nor !!!!!!!!  - inside the hamakerConstant = 1 --> ","\n",df1.shape,"\n",df2.shape, "\n",df3.shape,"\n",df4.shape)
 
@@ -74,11 +75,13 @@ def filesaveDatain_dat(directory_path,ampdata2saveAspiezo_nm,ampdata2saveAsAmpli
         # combined_df = pd.concat([df1,df2,df3], axis=1)
         # Save the combined DataFrame to a .dat file
 
-        filename = filenameAmplitude.strip('.')[0:-5]+filenamephase.strip('.')[0:-5]+"hamaker"+".dat"
-        combined_df.to_csv(directory_path+filename, sep=' ', index=False, header=True)
+        filenamehawmaker = filenameAmplitude.strip('.')[0:-5]+filenamephase.strip('.')[0:-5]+"hamaker"+".dat"
+        combined_df.to_csv(directory_path+filenamehawmaker, sep=' ', index=False, header=True)
 
-        print(colored(f" \n HELLO ! <----------  file are saved in .dat format with name:{filename} ---------->  ",'green', attrs=['bold']))
-
+        print(colored(f" \n HELLO ! <----------  file are saved in .dat format with name:{filenamehawmaker} ---------->  ",'green', attrs=['bold']))
+    
+    return  filename
+    
     # # Save the combined DataFrame to a .dat file
     # combined_df.to_csv('combined_data.dat', sep=' ', index=False)
    
