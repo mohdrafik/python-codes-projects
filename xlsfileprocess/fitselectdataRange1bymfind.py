@@ -34,9 +34,9 @@ def find1bymcampdfandfit(ampdf,phasedf,backward_MinimaBump_nmValue,forward_Minim
     desired_nmBackIndexwrtoInflexion = res_indices[0] - N_count_back  # it is from the inflexion point
     desired_nmBackIndexwrtoMinima = res_indices[1] - N_count_back  # this is from the minima point
     # desired_nmBackIndex
-
     # now time to choose the data 3nm after the minima(bump):
     # forward_MinimaBump_nmValue = 10.0     # <------------- make it as argument in func.
+    
     N_count_forward = (forward_MinimaBump_nmValue)/(d_nm)  # (using a+(n-1)D)
     N_count_forward = np.ceil(N_count_forward)
     data_choose_endindex = res_indices[1] + int(N_count_forward)
