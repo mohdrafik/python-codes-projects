@@ -3,7 +3,7 @@ import numpy as np
 import os
 from termcolor import colored
 
-def hamaker_save_data(data_path, ampfrominflexion2flat_nm, phasefrominflexion2flat_degree, piezofrominflexion2flat_nm, filenameAmplitude, filenamephase, A0, K = 2.56, Q = 234, R = 10 * 10E-9):
+def hamaker_save_data(data_path, ampfrominflexion2flat_nm, phasefrominflexion2flat_degree, piezofrominflexion2flat_nm, filenameAmplitude, filenamephase, A0, K = 2.56, Q = 234, R = 10e-9):
     
     ampfrominflexion2flat_nm = ampfrominflexion2flat_nm.reset_index(drop=True)
     phasefrominflexion2flat_degree = phasefrominflexion2flat_degree.reset_index(drop=True)
