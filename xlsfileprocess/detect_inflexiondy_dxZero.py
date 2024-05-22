@@ -55,7 +55,7 @@ if __name__=="__main__":
     phasedf=phasedf.set_axis(['Piezo','Amplitude'],axis='columns')
     print(phasedf.head(),"\n")
     print(ampdf.shape)
-    # x= nm  , y= nA
+    # x= nm,  y= nA
     data_endamp =ampdf.shape[0]
     print("end dat pints = \n",data_endamp)
     consecutive_decrease_windowsize = 8
