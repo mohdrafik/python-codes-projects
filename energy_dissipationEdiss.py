@@ -3,7 +3,7 @@ import numpy as np
 import os
 from termcolor import colored
 
-def energy_dissipation(data_path, ampfrominflexion2flat_nm, phasefrominflexion2flat_degree, piezofrominflexion2flat_nm, filenameAmplitude, filenamephase, A0, K = 2.56, Q = 234):
+def energy_dissipation(data_path, ampfrominflexion2flat_nm, phasefrominflexion2flat_degree, piezofrominflexion2flat_nm, filenameAmplitude, filenamephase, A0, K = None, Q = None):
     
     ampfrominflexion2flat_nm = ampfrominflexion2flat_nm.reset_index(drop=True)
     phasefrominflexion2flat_degree = phasefrominflexion2flat_degree.reset_index(drop=True)
@@ -13,9 +13,12 @@ def energy_dissipation(data_path, ampfrominflexion2flat_nm, phasefrominflexion2f
     amp_df_meter = ampfrominflexion2flat_nm / 1e9
     piezo_df_meter = piezofrominflexion2flat_nm / 1e9
     phase_df_radian = np.radians(phasefrominflexion2flat_degree)
+    phase_df_degree = phasefrominflexion2flat_degree
 
     # Calculate Hamaker values
-    E_diss = ((np.pi * K * amp_df_meter**2) / Q) * ((A0 / amp_df_meter) * np.sin(phase_df_radian) - 1)
+    # E_diss = ((np.pi * K * amp_df_meter**2) / Q) * (((A0 / amp_df_meter) * np.sin(phase_df_radian)) - 1)
+    E_diss = ((np.pi * K * amp_df_meter**2) / Q) * (((A0 / amp_df_meter) * np.sin(phase_df_degree)) - 1)
+    E_diss = E_diss * 6.242e18
     
     # hamaker_values = ((-3 * K * A0) / (Q * R)) * ((amp_df_meter ** 2) * np.cos(phase_df_radian)) * ((((piezo_df_meter + amp_df_meter) / amp_df_meter) ** 2) - 1) ** 1.5
 
@@ -25,7 +28,8 @@ def energy_dissipation(data_path, ampfrominflexion2flat_nm, phasefrominflexion2f
         'amplitude_meter': amp_df_meter,
         'phase_degree': phasefrominflexion2flat_degree,
         'phase_rad': phase_df_radian,
-        'hamaker_values': E_diss
+        'phase_degree':phase_df_degree,
+        'Energy_dissipation(eV)': E_diss
     })
 
     # Create directory 'hamaker_data' if it doesn't exist
