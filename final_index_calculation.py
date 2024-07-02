@@ -20,7 +20,8 @@ def findActualInflexion(inflexion_After_avg,list_avg,data_endamp,avg_window,ampd
     index_Actual_Array = last_index_ampdf - index_Actual_reverseArray + 1
     final_Actual_index =  index_Actual_Array -1
 
-    print(" this the actual index from where we get flat amplitude almost ! --> ",final_Actual_index)
+    print(" this the actual index from where we get flat amplitude almost ! --> ",final_Actual_index)  # 
+
     # main plot and inflexion point w.r.to main data 
     y_actual = ampdfAmplitudeColumnarr[final_Actual_index]
     x_scatter = ampdfPiezoColumnarr[final_Actual_index] 
@@ -34,4 +35,4 @@ def findActualInflexion(inflexion_After_avg,list_avg,data_endamp,avg_window,ampd
         plt.grid()
         plt.show()
 
-    return final_Actual_index
+    return final_Actual_index 
