@@ -100,7 +100,7 @@ def find1bymcampdfandfit_smmothData(ampdf,phasedf,backward_MinimaBump_nmValue,fo
     # Plot the data and the linear fit
     fig, ax1 = plt.subplots()
     ax1.plot(ampdf_x_nm,ampdf_y_nm, marker ='.',label='Data(nm)')
-    ax1.set_xlabel('piezo(nm)')
+    ax1.set_xlabel('piezo(nm)')  
     ax1.set_ylabel('Amplitude(nm)',color='b')
     ax1.tick_params('y', colors='b')  # this will make blue color font on y axis left side.
     ax1.grid()
@@ -192,11 +192,11 @@ def find1bymcampdfandfit_smmothData(ampdf,phasedf,backward_MinimaBump_nmValue,fo
     ampfrominflexion2flat_nm, ------> amplitude from from index_inflexion: to dataselect1(zero_orFlatAmp)
     phasefrominflexion2flat_degree,-> phase from from index_inflexion: to dataselect1(zero_orFlatAmp)
     piezofrominflexion2flat_nm -----> piezo from from index_inflexion: to dataselect1(zero_orFlatAmp)
-    
+    m slope in nA/nm  --> do 1/m then become in nm/nA  then can change the ampdf any time from any range to any range.
     """ 
 
     # # now generate a .dat file from the where data is saved ( unit: nm)
-    return (ampdata2saveAspiezo_nm,ampdata2saveAsAmplitude_nm,phasedata2savedegree,ampfrominflexion2flat_nm,phasefrominflexion2flat_degree,piezofrominflexion2flat_nm)
+    return (ampdata2saveAspiezo_nm,ampdata2saveAsAmplitude_nm,phasedata2savedegree,ampfrominflexion2flat_nm,phasefrominflexion2flat_degree,piezofrominflexion2flat_nm,m)
 
 
 
@@ -371,8 +371,8 @@ def find1bymcampdfandfit(ampdf,phasedf,backward_MinimaBump_nmValue,forward_Minim
     ampfrominflexion2flat_nm, ------> amplitude from from index_inflexion: to dataselect1(zero_orFlatAmp)
     phasefrominflexion2flat_degree,-> phase from from index_inflexion: to dataselect1(zero_orFlatAmp)
     piezofrominflexion2flat_nm -----> piezo from from index_inflexion: to dataselect1(zero_orFlatAmp)
-    
+    m slope in nA/nm  --> do 1/m then become in nm/nA  then can change the ampdf any time from any range to any range.
     """ 
 
     # # now generate a .dat file from the where data is saved ( unit: nm)
-    return (ampdata2saveAspiezo_nm,ampdata2saveAsAmplitude_nm,phasedata2savedegree,ampfrominflexion2flat_nm,phasefrominflexion2flat_degree,piezofrominflexion2flat_nm)
+    return (ampdata2saveAspiezo_nm,ampdata2saveAsAmplitude_nm,phasedata2savedegree,ampfrominflexion2flat_nm,phasefrominflexion2flat_degree,piezofrominflexion2flat_nm,m)
