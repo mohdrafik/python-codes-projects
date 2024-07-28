@@ -3,6 +3,7 @@ ran1.txt
 garbage.py
 *.xlsx
 *.xls
+*.jpg
 *.png
 *.jpeg
 /pdata*
