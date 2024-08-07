@@ -20,27 +20,28 @@ def hamaker_const(datapath, filename, hamdeg = None ):
     # df_nd = pd.read_excel("408 with piezo.xlsx")
     file2read = os.path.join(datapath,filename)
 
-    df_nd = pd.read_excel(file2read)
+    # df_nd = pd.read_excel(file2read)
+    df_nd = pd.read_csv(file2read,delimiter=' ')
 
-    for col in df_nd.columns:
-        print(col)
-        if col =="piezo":
-            distancekey = "piezo"
-        elif col == "piezo ":
-            distancekey = "piezo "
-        elif col == "neardistance ":
-            distancekey = "neardistance "
-        elif  col == "neardistance":
-            distancekey = "neardistance"
-        else:
-            print("----------- May be new key is there just check :----->")
+    # for col in df_nd.columns:
+    #     print(col)
+    #     if col =="piezo":
+    #         distancekey = "piezo"
+    #     elif col == "piezo ":
+    #         distancekey = "piezo "
+    #     elif col == "neardistance ":
+    #         distancekey = "neardistance "
+    #     elif  col == "neardistance":
+    #         distancekey = "neardistance"
+    #     else:
+    #         print("----------- May be new key is there just check :----->")
             
 
-    print(df_nd.head() ,"and size:\n ",df_nd.shape,"\n", df_nd.tail(),"\n")   # Piezo Amp near distant in meter
+    # print(df_nd.head() ,"and size:\n ",df_nd.shape,"\n", df_nd.tail(),"\n")   # Piezo Amp near distant in meter
     K= 26.90  # N/m
     Q= 466
-    R = 10  # nm 
-    R = R*1e-9  # m now after convert from nm 
+    # R = 10  # nm 
+    R = 10*1e-9  # m now after convert from nm 
     A0 = df_nd['amplitude'].iloc[-1]
     K_constant = -(3*K*A0)/(Q*R)
 
@@ -50,25 +51,34 @@ def hamaker_const(datapath, filename, hamdeg = None ):
     # cosphi = [ math.cos(phase) for phase in df_nd['phase']]  # when by default phase in degree
     # phase_radians = [math.radians(phase) for phase in df_nd['phase']]  # here phase converted to radian
     # cosphi_rad = [ math.cos(phase) for phase in phase_radian]
-    # cos_phi_rad = np.cos(phase_radian)
+    # cos_phi = np.cos(phase_radian)
     
     if hamdeg is not None:
         # cos_phi_deg = np.cos(phase_deg)
-        cos_phi_rad = np.cos(phase_deg)
+        cos_phi = np.cos(phase_deg)  # is not None 1,2,3 degree
         print( " !!!!!!cos_phi values is taken in degrre ------->")
 
     else:
-        cos_phi_rad = np.cos(df_nd["phase_radian"])
+        cos_phi = np.cos(df_nd["phase_radian"])  # None hai to radian
         print( " !!!!!! cos_phi values is taken in Radian ------>")
 
         
     
-    print(f"A_cosphi \n:{cos_phi_rad}  and\n  --> Phase in radians: \n {1},\n {phase_deg} \n {df_nd} ")
+    # print(f"A_cosphi \n:{cos_phi}  and\n  --> Phase in radians: \n {1},\n {phase_deg} \n {df_nd} ")
 
-    Asqu_multi_cosphi = df_nd['amplitude']**2 *cos_phi_rad   # Asqu_multi_cosphi = df_nd['amplitude']**2 *(cos_phi_rad)
+    Asqu_multi_cosphi = df_nd['amplitude']**2 *cos_phi   # Asqu_multi_cosphi = df_nd['amplitude']**2 *(cos_phi)
     # last_term = ((df_nd["neardistance"]/df_nd["amplitude"] + 1)**2  - 1 )**1.5
-    last_term = ((df_nd[distancekey]/df_nd["amplitude"] + 1)**2  - 1 )**1.5
+    # last_term = ((df_nd[distancekey]/df_nd["amplitude"] + 1)**2  - 1 )**1.5
+    # last_term = ((df_nd['piezo']/df_nd["amplitude"] + 1)**2  - 1 )**1.5  
 
+    ifcomplex_part_lastTerm = ((df_nd['piezo']/df_nd["amplitude"] + 1)**2  - 1)  # last term is less than zero 
+    ifcomplex_part_lastTerm = np.abs(ifcomplex_part_lastTerm)   # making it positive 
+    last_term = (ifcomplex_part_lastTerm)**1.5   # sepeartly
+
+    # last_term = ((df_nd['piezo']/df_nd["amplitude"] + 1)**2  - 1 )**1.5  
+    # last_term = np.abs(last_term)
+
+    df_nd['last_term']  = last_term
     ham_cons = K_constant * Asqu_multi_cosphi*last_term  # hm = - (3 * k * A0 * A**2 * math.cos(phi) / (Q * R)) * (((d + A) / A)**2 - 1)**(3/2)
 
     df_nd["ham_const"] = ham_cons
@@ -76,12 +86,12 @@ def hamaker_const(datapath, filename, hamdeg = None ):
     df_nd["ham_cons_avg"] = ham_cons_avg
 
     print(f"ham constant :{ham_cons} and \n{ham_cons.shape} and \n \n ----> hawmaker average value:\n {ham_cons_avg}")
-    ham_consfilename = "hamaker_data"+filename[0:-5]+".xlsx"
+    ham_consfilename = "hamaker_data"+filename[0:-4]+".xlsx"
     ham_consfilenamefinal = os.path.join(datapath,ham_consfilename)
     df_nd.to_excel(ham_consfilenamefinal)
 
     res = {
-            "filename":filename[0:-5],
+            "filename":filename[0:-4],
             "hamaker_const":ham_cons_avg
            }
     return res
@@ -100,12 +110,14 @@ if __name__=="__main__":
     filename_list = []
     hamaker_constavglist = []
 
-    datapath = "E:\\python_programs\\xlsfileprocess\\hamaker_data\\"
+    datapath = "E:\\python_programs\\xlsfileprocess\\hamaker_data\\hamdata\\"
+    # datapath = "E:\python_programs\xlsfileprocess\hamaker_data\hamdata"
     for filename in os.listdir(datapath):
         print("<------------------------------->",filename,)
-        if filename[-5:] ==".xlsx" and filename[0:7] !='hamaker':
-            print(f" current processing file name is {filename}") 
-            result = hamaker_const(datapath,filename)
+        # if filename[-5:] ==".xlsx" and filename[0:7] !='hamaker':
+        if filename[-4:] ==".dat" and filename[0:7] !='hamaker':
+            print(f"----------->!!!!!!!! current processing file name is {filename}") 
+            result = hamaker_const(datapath,filename, hamdeg= None)
 
             filename_list.append(result["filename"])
             hamaker_constavglist.append(result["hamaker_const"])
@@ -115,11 +127,6 @@ if __name__=="__main__":
     hamaker_constavgData_df = pd.DataFrame(hamaker_constavgData)
 
     hamaker_constavgData_df.to_excel(os.path.join(datapath,'hamaker_avgValeachfile.xlsx'))        
-
-
-
-
-
 
     """
     If hamdeg is None --> calculate the codphi in Radian. Otherwise in degree.
@@ -137,9 +144,7 @@ if __name__=="__main__":
     
     # if distancekey is None:
     #     print("No valid distance column found in the file.")
-    #     return
-    
-  
+    #     return 
     
 #     df_nd["phase_radian"] = np.deg2rad(df_nd["phase"])
     
