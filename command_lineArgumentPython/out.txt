@@ -1,0 +1,6 @@
+filename:tomriman01.3371N1minmaxdata maxdata :1.334 and mindata :1.334 
+filename:tomriman1.33711.3571N2minmaxdata maxdata :1.3571284039216958 and mindata :1.3373881947484867 
+filename:tomriman1.35711.367N3minmaxdata maxdata :1.3670288198405554 and mindata :1.3571319771870884 
+filename:tomriman1.3671.3883N4minmaxdata maxdata :1.3882996915296981 and mindata :1.3670304341001487 
+filename:tomriman1.38831.4029N5minmaxdata maxdata :1.4028994182172574 and mindata :1.3883004194785107 
+filename:tomriman1.40291.458N6minmaxdata maxdata :1.457687633726775 and mindata :1.4029001721218124 
