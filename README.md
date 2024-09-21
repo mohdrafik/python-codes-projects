@@ -1,7 +1,8 @@
 
-# Python Programs and Projects Repository
+# python-codes-projects 
+<!-- Python Programs and Projects Repository -->
 
-Welcome to the **Python Programs and Projects Repository**! This repository is organized into topics that cover a wide range of Python concepts, from beginner to expert-level, with a focus on practical examples and projects using popular libraries such as **Pandas**, **NumPy**, **Matplotlib**, and others.
+Welcome to the **python-codes-projects Repository**! This repository is organized into topics that cover a wide range of Python concepts, from beginner to expert-level, with a focus on practical examples and projects using popular libraries such as **Pandas**, **NumPy**, **Matplotlib**, and others.
 
 This repository is designed to help Python learners build a solid foundation and advance their skills through a hands-on approach.
 
@@ -39,12 +40,12 @@ Each topic is organized into a folder with relevant Python programs and examples
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/your-username/python-programs-projects.git
+   git clone https://github.com/mohdrafik/python-codes-projects.git
    ```
 
 2. Navigate to the repository directory:
    ```bash
-   cd python-programs-projects
+   cd python-codes-projects
    ```
 
 3. Install the required Python libraries:
