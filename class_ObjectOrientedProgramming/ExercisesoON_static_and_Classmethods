@@ -1,0 +1,75 @@
+Exercise 1: Bank Account Management
+Create a class BankAccount that has:
+
+A class variable bank_name set to "ABC Bank".
+An __init__() method that initializes:
+account_number
+account_holder
+balance (default to 0)
+A class method change_bank_name(cls, new_name) to update the bank's name.
+A static method validate_amount(amount) to check if the amount is positive.
+An deposit(amount) method to add money (only if the amount is valid).
+A withdraw(amount) method to withdraw money (only if the amount is valid and does not exceed balance).
+A display_info() method to print account details.
+Tasks:
+
+Create a bank account for "John Doe" with an initial balance of $1000.
+Deposit $500, then withdraw $2000 (should show an error).
+Change the bank name to "XYZ Bank", and check if all accounts reflect this change.
+
+# --------------------------------------------------------------
+Exercise 2: Employee Management System
+Create a class Employee with:
+
+A class variable company_name set to "TechCorp".
+An __init__() method to initialize name, position, and salary.
+A class method change_company_name(cls, new_name) to update the company name.
+A static method is_valid_salary(salary) to ensure salary is greater than 0.
+A display_info() method to print employee details.
+Tasks:
+
+Create two employees: "Alice" (Manager, $70000) and "Bob" (Developer, $50000).
+Validate their salaries using the static method.
+Change the company name to "InnovateTech" and check if all employees reflect this change.
+
+# --------------------------------------------------------------
+Exercise 3: Temperature Converter
+Create a class TemperatureConverter that:
+
+Has a static method celsius_to_fahrenheit(temp_celsius) that converts Celsius to Fahrenheit.
+Has a static method fahrenheit_to_celsius(temp_fahrenheit) that converts Fahrenheit to Celsius.
+Has a class method info(cls) that prints "This class provides temperature conversion utilities."
+Tasks:
+
+Convert 100°C to Fahrenheit.
+Convert 212°F to Celsius.
+Call the class method to display class info.
+
+# --------------------------------------------------------------
+Exercise 4: Student Records Management
+Create a class Student with:
+
+A class variable school_name = "Greenwood High"
+An __init__() method that initializes name, grade, and marks.
+A class method change_school(cls, new_name) to update the school name.
+A static method is_passed(marks) to return True if marks are >= 50, otherwise False.
+A display_info() method to print student details.
+Tasks:
+
+Create students "Jake" (Grade 10, marks: 85) and "Emily" (Grade 9, marks: 45).
+Check if each student passed using is_passed().
+Change the school name to "Sunrise Academy" and verify.
+
+# --------------------------------------------------------------
+Exercise 5: Vehicle Counter
+Create a class Vehicle with:
+
+A class variable vehicle_count = 0 (counts total vehicles).
+An __init__() method that initializes brand, model, and increases vehicle_count.
+A class method total_vehicles(cls) to return the total count.
+A static method is_valid_model_year(year) to check if the model year is after 2000.
+Tasks:
+
+Create three vehicles ("Toyota Corolla", "Ford Mustang", "Honda Civic").
+Check if "1999" is a valid model year using is_valid_model_year().
+Print the total number of vehicles.
