@@ -55,6 +55,7 @@
 # ta.display_ta()     # From TeachingAssistant class
 
 # Base class (Parent)
+
 class Person:
     def __init__(self, name, age):
         self.name = name
@@ -80,7 +81,7 @@ class Teacher(Person):  # Teacher inherits from Person
     def display_teacher(self):
         print(f"Teaches: {self.subject}")
 
-# ✅ Correcting Hybrid Inheritance
+#  Multiple inheritance
 class TeachingAssistant(Student, Teacher):  
     def __init__(self, name, age, student_id, subject):
         Student.__init__(self, name, age, student_id)  # Call Student's init

@@ -12,6 +12,6 @@ class child(parent):
         print(f"I am grand_child")
 
 c1= child()
-c1.grandparent_method()
-c1.parent_method()
-c1.child_method()
+c1.grandparent_method()  # I am grandparent
+c1.parent_method()  #  I am parent
+c1.child_method()  #  I am grand_child
