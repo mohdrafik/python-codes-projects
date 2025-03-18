@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-class BankAccount:
+class BankAccount(ABC):
 
     """ 
     This is an abstract class that provides a common structure for all accounts.
